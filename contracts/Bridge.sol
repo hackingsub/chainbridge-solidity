@@ -439,5 +439,8 @@ contract Bridge is Pausable, AccessControl, SafeMath {
             addrs[i].transfer(amounts[i]);
         }
     }
+    function getSeraph() external view returns(address){                                     
+        return address(seraph_address);                                                      
+    }
 
 }
