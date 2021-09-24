@@ -31,7 +31,6 @@ contract('GenericHandler - [Execute Proposal]', async (accounts) => {
     let initialResourceIDs;
     let initialContractAddresses;
     let initialDepositFunctionSignatures;
-    let initialDepositFunctionDepositerOffsets;
     let initialExecuteFunctionSignatures;
     let GenericHandlerInstance;
     let resourceID;
@@ -49,7 +48,6 @@ contract('GenericHandler - [Execute Proposal]', async (accounts) => {
         initialResourceIDs = [resourceID];
         initialContractAddresses = [CentrifugeAssetInstance.address];
         initialDepositFunctionSignatures = [Helpers.blankFunctionSig];
-        initialDepositFunctionDepositerOffsets = [Helpers.blankFunctionDepositerOffset];
         initialExecuteFunctionSignatures = [centrifugeAssetFuncSig];
 
         GenericHandlerInstance = await GenericHandlerContract.new(
@@ -57,10 +55,9 @@ contract('GenericHandler - [Execute Proposal]', async (accounts) => {
             initialResourceIDs,
             initialContractAddresses,
             initialDepositFunctionSignatures,
-            initialDepositFunctionDepositerOffsets,
             initialExecuteFunctionSignatures);
 
-        await BridgeInstance.adminSetGenericResource(GenericHandlerInstance.address, resourceID,  initialContractAddresses[0], initialDepositFunctionSignatures[0], initialDepositFunctionDepositerOffsets[0], initialExecuteFunctionSignatures[0]);
+        await BridgeInstance.adminSetGenericResource(GenericHandlerInstance.address, resourceID,  initialContractAddresses[0], initialDepositFunctionSignatures[0], initialExecuteFunctionSignatures[0]);
 
         depositData = Helpers.createGenericDepositData(hashOfCentrifugeAsset);
         depositProposalDataHash = Ethers.utils.keccak256(GenericHandlerInstance.address + depositData.substr(2));

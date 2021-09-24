@@ -1,6 +1,4 @@
-pragma solidity 0.6.12;
-
-import "./utils/SafeCast.sol";
+pragma solidity 0.6.4;
 
 contract NoArgument {
     event NoArgumentCalled();
@@ -31,21 +29,5 @@ contract ThreeArguments {
 
     function threeArguments(string calldata argumentOne, int8 argumentTwo, bool argumentThree) external {
         emit ThreeArgumentsCalled(argumentOne, argumentTwo, argumentThree);
-    }
-}
-
-contract WithDepositer {
-    event WithDepositerCalled(address argumentOne, uint256 argumentTwo);
-
-    function withDepositer(address argumentOne, uint256 argumentTwo) external {
-        emit WithDepositerCalled(argumentOne, argumentTwo);
-    }
-}
-
-contract SafeCaster {
-    using SafeCast for *;
-
-    function toUint200(uint input) external pure returns(uint200) {
-        return input.toUint200();
     }
 }

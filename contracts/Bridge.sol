@@ -1,11 +1,11 @@
-pragma solidity 0.6.12;
+pragma solidity 0.6.4;
 pragma experimental ABIEncoderV2;
 
-import "./utils/AccessControl.sol";
+import "./AccessControl.sol";
 import "./utils/Pausable.sol";
 import "./utils/SafeMath.sol";
-import "./utils/SafeCast.sol";
 import "./interfaces/IDepositExecute.sol";
+import "./interfaces/IBridge.sol";
 import "./interfaces/IERCHandler.sol";
 import "./interfaces/IGenericHandler.sol";
 
@@ -441,4 +441,3 @@ contract Bridge is Pausable, AccessControl, SafeMath {
     }
 
 }
-

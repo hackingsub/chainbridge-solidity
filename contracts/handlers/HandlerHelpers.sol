@@ -1,4 +1,4 @@
-pragma solidity 0.6.12;
+pragma solidity 0.6.4;
 
 import "../interfaces/IERCHandler.sol";
 
@@ -27,7 +27,7 @@ contract HandlerHelpers is IERCHandler {
         _;
     }
 
-    function _onlyBridge() private view {
+    function _onlyBridge() private {
         require(msg.sender == _bridgeAddress, "sender must be bridge contract");
     }
 

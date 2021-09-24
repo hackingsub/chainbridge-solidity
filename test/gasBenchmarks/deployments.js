@@ -18,7 +18,6 @@ contract('Gas Benchmark - [contract deployments]', async () => {
     const initialContractAddresses = [];
     const burnableContractAddresses = [];
     const initialDepositFunctionSignatures = [];
-    const initialDepositFunctionDepositerOffsets = [];
     const initialExecuteFunctionSignatures = [];
     const centrifugeAssetMinCount = 1;
     const gasBenchmarks = [];
@@ -31,7 +30,7 @@ contract('Gas Benchmark - [contract deployments]', async () => {
             await Promise.all([
                 ERC20HandlerContract.new(BridgeInstance.address, initialResourceIDs, initialContractAddresses, burnableContractAddresses),
                 ERC721HandlerContract.new(BridgeInstance.address, initialResourceIDs, initialContractAddresses, burnableContractAddresses),
-                GenericHandlerContract.new(BridgeInstance.address, initialResourceIDs, initialContractAddresses, initialDepositFunctionSignatures, initialDepositFunctionDepositerOffsets, initialExecuteFunctionSignatures),
+                GenericHandlerContract.new(BridgeInstance.address, initialResourceIDs, initialContractAddresses, initialDepositFunctionSignatures, initialExecuteFunctionSignatures),
                 CentrifugeAssetContract.new(centrifugeAssetMinCount),
                 HandlerHelpersContract.new(),
                 ERC20SafeContract.new(),

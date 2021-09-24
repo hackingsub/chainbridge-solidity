@@ -1,13 +1,8 @@
-// SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
 
-pragma solidity 0.6.12;
-
-// This is adapted from https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/access/AccessControl.sol
-// The only difference is added getRoleMemberIndex(bytes32 role, address account) function.
-
-import "@openzeppelin/contracts/utils/EnumerableSet.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/GSN/Context.sol";
+import "./EnumerableSet.sol";
+import "./Address.sol";
+import "./Context.sol";
 
 /**
  * @dev Contract module that allows children to implement role-based access
@@ -103,13 +98,6 @@ abstract contract AccessControl is Context {
      */
     function getRoleMember(bytes32 role, uint256 index) public view returns (address) {
         return _roles[role].members.at(index);
-    }
-
-    /**
-     * @dev Returns the index of the account that have `role`.
-     */
-    function getRoleMemberIndex(bytes32 role, address account) public view returns (uint256) {
-        return _roles[role].members._inner._indexes[bytes32(uint256(account))];
     }
 
     /**
