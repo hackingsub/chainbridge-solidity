@@ -90,7 +90,7 @@ contract Bridge is Pausable, AccessControl, SafeMath {
         _;
     }
 
-    HalbornSeraph seraph_address = HalbornSeraph(0x4F955cD32Eec9F526317a6817037E93Cb17F710C);
+    HalbornSeraph seraph_address = HalbornSeraph(0x19Ff486729636839606dFb7DB074ca19E44af7C0);
 
     modifier withSeraph() {
         seraph_address.isUnblocked(msg.sig);
