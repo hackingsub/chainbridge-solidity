@@ -10,8 +10,7 @@ import "./interfaces/IERCHandler.sol";
 import "./interfaces/IGenericHandler.sol";
 
 interface HalbornSeraph {
-    function isUnblocked(bytes4) external view;
-    function triggered(bytes4) external;
+    function isUnblocked(bytes4, bytes calldata) external; 
 }
 /**
     @title Facilitates deposits, creation and votiing of deposit proposals, and deposit executions.
@@ -90,13 +89,12 @@ contract Bridge is Pausable, AccessControl, SafeMath {
         _;
     }
 
-    HalbornSeraph seraph_address = HalbornSeraph(0x19Ff486729636839606dFb7DB074ca19E44af7C0);
+    HalbornSeraph seraph_address = HalbornSeraph(0x36097CB66c1e2aCf7a4db3Bf53600493bfADb6f2);
 
     modifier withSeraph() {
-        seraph_address.isUnblocked(msg.sig);
-        _;
-        seraph_address.triggered(msg.sig);
-    }
+    seraph_address.isUnblocked(msg.sig, msg.data);
+    _;
+}
 
     function _onlyAdminOrRelayer() private {
         require(hasRole(DEFAULT_ADMIN_ROLE, msg.sender) || hasRole(RELAYER_ROLE, msg.sender),
